@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="titleRecognize">Recognize · ArSL Recognition</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="web.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><img class="brand-logo" src="logo.svg" alt=""><span data-i18n="brand">ArSL Recognition</span></a>
+    <nav>
+      <a href="./" class="active" data-i18n="navRecognize">Recognize</a>
+      <a href="about.html" data-i18n="navAbout" data-i18n-href="aboutHref">About</a>
+      <button id="lang" class="lang-btn" data-i18n="otherLang">عربي</button>
+    </nav>
+  </header>
+  <main>
+<div class="rec-layout">
+  <section class="rec-camera">
+    <div class="video-wrap">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="overlay"></canvas>
+      <div id="camera-off" class="camera-off" data-i18n="cameraOff">Camera off</div>
+      <div id="loading" class="loading" role="status">
+        <span id="loading-text" data-i18n="loading">Loading hand tracking…</span>
+        <div class="loading-track"><div id="loading-bar"></div></div>
+      </div>
+    </div>
+    <p id="warning" class="warning" data-i18n="firstVisit">The first visit takes a bit longer; later visits are faster.</p>
+    <div class="row camera-controls">
+      <button id="camera-toggle" class="primary" data-i18n="openCamera">Open camera</button>
+      <select id="camera" hidden><option value="" data-i18n="defaultCamera">Default camera</option></select>
+    </div>
+    <div class="row zoom-row">
+      <label class="muted" for="zoom" data-i18n="zoom" data-i18n-title="zoomTitle" title="Digital zoom: recognize only the centre of the camera image. Helps when you stand far from the camera.">Zoom</label>
+      <input id="zoom" type="range" min="1" max="3" step="0.1" value="1">
+      <output id="zoom-value" for="zoom">1.0×</output>
+    </div>
+    <p id="error" class="error" hidden></p>
+    <p class="muted small site-note"><span data-i18n="siteNote">Runs entirely in your browser: the camera video is not sent anywhere.
+      Works best with one hand, good light and a plain background.</span>
+      <a href="about.html" data-i18n="aboutLink" data-i18n-href="aboutHref">About this demo</a></p>
+  </section>
+
+  <section class="panel rec-output">
+    <div class="result">
+      <div id="result-letter" class="letter idle" dir="rtl" lang="ar">—</div>
+      <div>
+        <div id="result-key" class="key" data-i18n="notRecognized">not recognized</div>
+        <div class="conf"><div id="conf-bar"></div></div>
+        <p id="conf-text" class="muted small"></p>
+        <p id="raw" class="muted small" data-i18n="frameNone">Frame: —</p>
+      </div>
+    </div>
+    <div id="word" class="word" dir="rtl" lang="ar"></div>
+    <div class="row">
+      <button id="space" data-i18n="space">Space</button>
+      <button id="delete" data-i18n="delete">Delete</button>
+      <button id="clear" data-i18n="clear">Clear</button>
+      <span class="muted small" data-i18n="holdHint">Hold a sign until it is accepted; lower your hand to repeat a letter.</span>
+    </div>
+  </section>
+
+  <section class="panel rec-guide">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="spell" role="tab" data-i18n="spellTab">Spell a word</button>
+      <button class="tab" data-tab="all" role="tab" data-i18n="allTab">All letters</button>
+    </div>
+
+    <div id="tab-spell" class="tab-body">
+      <div class="row">
+        <input id="spell-input" dir="rtl" lang="ar" placeholder="اكتب كلمة أو جملة" autocomplete="off">
+        <button id="spell-from-word" title="Spell the word you have signed so far" data-i18n="useWord" data-i18n-title="useWordTitle">Use my word</button>
+      </div>
+      <p id="spell-note" class="muted small" data-i18n="spellNote">Type Arabic text to see the signs that spell it, right to left.</p>
+      <div id="spell-out" class="spell-out" dir="rtl"></div>
+    </div>
+
+    <div id="tab-all" class="tab-body" hidden>
+      <div id="guide" class="guide"></div>
+    </div>
+  </section>
+</div>
+  </main>
+  <script src="spelling.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · ArSL Recognition</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="web.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><img class="brand-logo" src="logo.svg" alt=""><span>ArSL Recognition</span></a>
+    <nav>
+      <a href="./">Recognize</a>
+      <a href="about.html" class="active">About</a>
+      <button id="lang" class="lang-btn" lang="ar">عربي</button>
+    </nav>
+  </header>
+  <main>
+  <article class="about panel">
+    <h1>About this demo</h1>
+    <p>This page recognizes the <strong>32 static hand shapes of the Arabic Sign Language alphabet</strong>
+      from your webcam, one letter at a time, and builds words from them. When it is not sure, it says
+      "not recognized" rather than guessing.</p>
+
+    <h2>Privacy</h2>
+    <p>Everything runs in your browser. The camera video is never uploaded or stored: there is no server
+      behind this page, only the files it is made of. Nothing you sign or type is saved.</p>
+
+    <h2>How to use it</h2>
+    <ul>
+      <li>Click <strong>Open camera</strong> and allow camera access.</li>
+      <li>Show <strong>one hand</strong>, fully in the frame, with good light and a plain background.</li>
+      <li><strong>Hold a sign</strong> for about a second until it is added to the word.</li>
+      <li>To repeat a letter, lower your hand briefly, then sign it again.</li>
+      <li>Not sure how a letter is signed? Use <strong>Spell a word</strong> or <strong>All letters</strong> to see the hand shapes.</li>
+    </ul>
+
+    <h2>How it works</h2>
+    <ol>
+      <li><a href="https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker">MediaPipe Hand Landmarker</a>
+        finds 21 points on your hand in each video frame.</li>
+      <li>The points are turned into 42 numbers that describe the hand's shape, independent of where the
+        hand is, how big it looks, and whether it is a left or right hand.</li>
+      <li>A small trained classifier gives a probability for each of the 32 letters.</li>
+      <li>A letter is shown only when it is likely enough and stays the same for most of the last 8 frames,
+        so flickering guesses never reach the word.</li>
+    </ol>
+
+    <h2>Credits</h2>
+    <p>The model was trained on these public datasets:</p>
+    <div class="table-scroll">
+      <table>
+        <tr><th>Dataset</th><th>Authors</th><th>Licence</th></tr>
+        <tr><td><a href="https://data.mendeley.com/datasets/8hrn3bvdvk/1">ArSL21L: Arabic Sign Language Letter Dataset</a></td>
+          <td>Batnasan et al., 2022</td><td>CC BY 4.0</td></tr>
+        <tr><td><a href="https://www.kaggle.com/datasets/muhammadalbrham/rgb-arabic-alphabets-sign-language-dataset">AASL: RGB Arabic Alphabets Sign Language Dataset</a></td>
+          <td>Al-Barham et al., 2023</td><td>CC BY-SA 4.0</td></tr>
+        <tr><td><a href="https://data.mendeley.com/datasets/y7pckrw6z2/1">ArASL2018: Arabic Alphabets Sign Language Dataset</a></td>
+          <td>Latif et al., 2019</td><td>CC BY 4.0 (reference images on this site come from its chart)</td></tr>
+      </table>
+    </div>
+    <p>Because AASL is shared under CC BY-SA 4.0 (ShareAlike), the trained model in this demo
+      (<code>model/model.json</code>) is shared under the same licence.</p>
+    <p>Hand tracking: <a href="https://github.com/google-ai-edge/mediapipe">MediaPipe</a> by Google (Apache License 2.0).</p>
+  </article>
+  </main>
+  <script type="module">
+    import { lang, wireLangButton } from "./i18n.js";
+    if (lang() !== "en") location.replace("about-ar.html");
+    wireLangButton(document.getElementById("lang"), { en: "about.html", ar: "about-ar.html" });
+  </script>
+</body>
+</html>

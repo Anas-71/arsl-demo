@@ -1,0 +1,130 @@
+[
+ {
+  "key": "alef",
+  "letter": "ا"
+ },
+ {
+  "key": "beh",
+  "letter": "ب"
+ },
+ {
+  "key": "teh",
+  "letter": "ت"
+ },
+ {
+  "key": "theh",
+  "letter": "ث"
+ },
+ {
+  "key": "jeem",
+  "letter": "ج"
+ },
+ {
+  "key": "hah",
+  "letter": "ح"
+ },
+ {
+  "key": "khah",
+  "letter": "خ"
+ },
+ {
+  "key": "dal",
+  "letter": "د"
+ },
+ {
+  "key": "thal",
+  "letter": "ذ"
+ },
+ {
+  "key": "reh",
+  "letter": "ر"
+ },
+ {
+  "key": "zain",
+  "letter": "ز"
+ },
+ {
+  "key": "seen",
+  "letter": "س"
+ },
+ {
+  "key": "sheen",
+  "letter": "ش"
+ },
+ {
+  "key": "sad",
+  "letter": "ص"
+ },
+ {
+  "key": "dad",
+  "letter": "ض"
+ },
+ {
+  "key": "tah",
+  "letter": "ط"
+ },
+ {
+  "key": "zah",
+  "letter": "ظ"
+ },
+ {
+  "key": "ain",
+  "letter": "ع"
+ },
+ {
+  "key": "ghain",
+  "letter": "غ"
+ },
+ {
+  "key": "feh",
+  "letter": "ف"
+ },
+ {
+  "key": "qaf",
+  "letter": "ق"
+ },
+ {
+  "key": "kaf",
+  "letter": "ك"
+ },
+ {
+  "key": "lam",
+  "letter": "ل"
+ },
+ {
+  "key": "meem",
+  "letter": "م"
+ },
+ {
+  "key": "noon",
+  "letter": "ن"
+ },
+ {
+  "key": "heh",
+  "letter": "ه"
+ },
+ {
+  "key": "waw",
+  "letter": "و"
+ },
+ {
+  "key": "yeh",
+  "letter": "ي"
+ },
+ {
+  "key": "teh_marbuta",
+  "letter": "ة"
+ },
+ {
+  "key": "laa",
+  "letter": "لا"
+ },
+ {
+  "key": "al",
+  "letter": "ال"
+ },
+ {
+  "key": "yeh_hamza",
+  "letter": "ئ"
+ }
+]

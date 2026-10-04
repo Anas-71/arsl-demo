@@ -1,0 +1,5 @@
+{
+ "hand_landmarker.task": 7819105,
+ "wasm/vision_wasm_internal.wasm": 11756954,
+ "wasm/vision_wasm_nosimd_internal.wasm": 10960242
+}

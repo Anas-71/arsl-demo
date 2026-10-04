@@ -1,0 +1,151 @@
+.video-wrap {
+  aspect-ratio: var(--cam-aspect, 4 / 3);
+}
+.rec-camera .video-wrap {
+  width: min(100%, calc((100vh - 15.5rem) * var(--cam-aspect, 4 / 3)));
+}
+.loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: .75rem 1rem;
+  color: #fff;
+  background: rgba(15, 23, 42, .8);
+  font-size: 1rem;
+}
+.loading-track {
+  height: 6px;
+  margin-top: .4rem;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .25);
+  overflow: hidden;
+}
+#loading-bar {
+  height: 100%;
+  width: 0;
+  background: #2dd4bf;
+  transition: width .2s;
+}
+.loading.failed {
+  background: rgba(185, 28, 28, .9);
+}
+.loading.failed .loading-track {
+  display: none;
+}
+.topbar nav {
+  align-items: center;
+}
+.lang-btn {
+  padding: .35rem .7rem;
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+[dir=rtl] .key,
+[dir=rtl] .tile-key {
+  font-family: inherit;
+}
+[dir=rtl] .tile-key {
+  font-size: .8rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  flex: none;
+}
+.site-note {
+  margin-top: .5rem;
+}
+.site-note a {
+  color: var(--accent);
+}
+@media (max-width: 900px) {
+  main {
+    padding: .75rem .75rem 2rem;
+  }
+  .topbar {
+    padding: .6rem .75rem;
+  }
+  .rec-camera .video-wrap {
+    width: min(100%, calc(50vh * var(--cam-aspect, 4 / 3)));
+  }
+  @supports (height: 1svh) {
+    .rec-camera .video-wrap {
+      width: min(100%, calc(50svh * var(--cam-aspect, 4 / 3)));
+    }
+  }
+  .rec-layout {
+    gap: .75rem;
+    min-height: 0;
+  }
+  .panel {
+    padding: .75rem;
+  }
+  .letter {
+    font-size: 3.25rem;
+  }
+  .result {
+    gap: .75rem;
+  }
+  .result .letter {
+    min-width: 4rem;
+  }
+  .word {
+    font-size: 2rem;
+    min-height: 3rem;
+  }
+  button,
+  select {
+    min-height: 2.75rem;
+  }
+  .camera-controls select {
+    flex: 1;
+    max-width: none;
+  }
+  .guide {
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  }
+  .spell-tile {
+    width: 72px;
+  }
+}
+.about {
+  max-width: 46rem;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+.about h1 {
+  margin-top: .25rem;
+}
+.about h2 {
+  margin-top: 1.5rem;
+}
+.about ul {
+  padding-inline-start: 1.25rem;
+}
+.about li {
+  margin: .25rem 0;
+}
+.about a {
+  color: var(--accent);
+}
+.about table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: .95rem;
+}
+.about th,
+.about td {
+  text-align: start;
+  padding: .4rem .5rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.table-scroll {
+  overflow-x: auto;
+}

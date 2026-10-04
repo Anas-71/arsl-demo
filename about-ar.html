@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>حول · التعرّف على لغة الإشارة العربية</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="web.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><img class="brand-logo" src="logo.svg" alt=""><span>التعرّف على لغة الإشارة</span></a>
+    <nav>
+      <a href="./">التعرّف</a>
+      <a href="about-ar.html" class="active">حول</a>
+      <button id="lang" class="lang-btn" lang="en">English</button>
+    </nav>
+  </header>
+  <main>
+  <article class="about panel">
+    <h1>حول هذا العرض</h1>
+    <p>تتعرّف هذه الصفحة على <strong>أشكال اليد الثابتة الاثنين والثلاثين لحروف لغة الإشارة العربية</strong>
+      من كاميرا الويب لديك، حرفًا حرفًا، وتكوّن منها كلمات. وعندما لا تكون متأكدة، تعرض «لم يتم التعرّف»
+      بدلًا من التخمين.</p>
+
+    <h2>الخصوصية</h2>
+    <p>يعمل كل شيء داخل متصفحك. لا يُرفَع فيديو الكاميرا ولا يُخزَّن أبدًا: لا يوجد خادم خلف هذه الصفحة،
+      بل الملفات التي تتكوّن منها فقط. ولا يُحفَظ أي شيء تشير به أو تكتبه.</p>
+
+    <h2>طريقة الاستخدام</h2>
+    <ul>
+      <li>انقر <strong>افتح الكاميرا</strong> واسمح بالوصول إلى الكاميرا.</li>
+      <li>أظهر <strong>يدًا واحدة</strong> كاملة داخل الإطار، مع إضاءة جيدة وخلفية بسيطة.</li>
+      <li><strong>ثبّت الإشارة</strong> نحو ثانية حتى تُضاف إلى الكلمة.</li>
+      <li>لتكرار حرف، اخفض يدك لحظة ثم أشر به مرة أخرى.</li>
+      <li>لست متأكدًا من إشارة حرف ما؟ استخدم <strong>تهجئة كلمة</strong> أو <strong>كل الحروف</strong> لرؤية أشكال اليد.</li>
+    </ul>
+
+    <h2>كيف يعمل</h2>
+    <ol>
+      <li>يحدّد <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker" lang="en">MediaPipe Hand Landmarker</a>
+        إحدى وعشرين نقطة على يدك في كل إطار من الفيديو.</li>
+      <li>تتحوّل هذه النقاط إلى اثنين وأربعين رقمًا تصف شكل اليد، بصرف النظر عن موضع اليد وحجمها الظاهر،
+        وعمّا إذا كانت يسرى أم يمنى.</li>
+      <li>يعطي مصنِّف صغير مُدرَّب احتمالًا لكل حرف من الحروف الاثنين والثلاثين.</li>
+      <li>لا يُعرَض الحرف إلا إذا كان مرجّحًا بما يكفي وبقي هو نفسه في معظم الإطارات الثمانية الأخيرة،
+        فلا تصل التخمينات المتذبذبة إلى الكلمة.</li>
+    </ol>
+
+    <h2>المصادر والشكر</h2>
+    <p>دُرِّب النموذج على مجموعات البيانات العامة التالية:</p>
+    <div class="table-scroll">
+      <table>
+        <tr><th>مجموعة البيانات</th><th>المؤلفون</th><th>الترخيص</th></tr>
+        <tr><td><a href="https://data.mendeley.com/datasets/8hrn3bvdvk/1" lang="en" dir="ltr">ArSL21L: Arabic Sign Language Letter Dataset</a></td>
+          <td lang="en" dir="ltr">Batnasan et al., 2022</td><td dir="ltr">CC BY 4.0</td></tr>
+        <tr><td><a href="https://www.kaggle.com/datasets/muhammadalbrham/rgb-arabic-alphabets-sign-language-dataset" lang="en" dir="ltr">AASL: RGB Arabic Alphabets Sign Language Dataset</a></td>
+          <td lang="en" dir="ltr">Al-Barham et al., 2023</td><td dir="ltr">CC BY-SA 4.0</td></tr>
+        <tr><td><a href="https://data.mendeley.com/datasets/y7pckrw6z2/1" lang="en" dir="ltr">ArASL2018: Arabic Alphabets Sign Language Dataset</a></td>
+          <td lang="en" dir="ltr">Latif et al., 2019</td><td><span dir="ltr">CC BY 4.0</span> (صور الإشارات المرجعية في هذا الموقع مأخوذة من لوحتها)</td></tr>
+      </table>
+    </div>
+    <p>لأن مجموعة <span lang="en">AASL</span> منشورة بترخيص <span dir="ltr">CC BY-SA 4.0</span> (المشاركة بالمثل)، فإن
+      النموذج المُدرَّب في هذا العرض (<code dir="ltr">model/model.json</code>) منشور بالترخيص نفسه.</p>
+    <p>تتبّع اليد: <a href="https://github.com/google-ai-edge/mediapipe" lang="en">MediaPipe</a> من Google
+      (<span dir="ltr">Apache License 2.0</span>).</p>
+  </article>
+  </main>
+  <script type="module">
+    import { lang, wireLangButton } from "./i18n.js";
+    if (lang() !== "ar") location.replace("about.html");
+    wireLangButton(document.getElementById("lang"), { en: "about.html", ar: "about-ar.html" });
+  </script>
+</body>
+</html>
